@@ -8,20 +8,24 @@ function init() {
   // start()
   getCountReward()
 }
-// test()
-init()
-function test() {
+// init()
+findTxt(['去完成', '领肥料'])
+function findTxt(list) {
   auto.waitFor()
   console.show()
-  console.log('test===')
-  var frame = text('浏览').findOnce()
-  if (frame) {
-    console.log('frame===', frame)
-    frame.click()
-    console.log('frame===', frame.bounds())
-    // click(483, 1500)
+  let flag = false
+  for (let i = 0; i < list.length; i++) {
+    var btn =
+      text(list[i]).findOne(1000) ||
+      className('android.view.view').text('浏览段视频(0/1)').findOnce()
+    if (btn) {
+      console.log('找到了===', list[i])
+      flag = true
+    }
   }
-  click(483, 1530)
+  if (!flag) {
+    console.log('没找到===')
+  }
 }
 // 启动淘特进入发财鸭页面
 function start() {
@@ -57,7 +61,7 @@ function getCountReward() {
   let flag = true
   while (flag) {
     console.log('找随机蛋...')
-    const btn = className('android.view.View').text('随机蛋').findOne()
+    const btn = className('android.view.View').text('随机蛋').findOne(2000)
     if (btn) {
       console.log('btn.bounds()===', btn.bounds())
       btn = null

@@ -23,7 +23,7 @@ function start() {
     })
   console.show()
 }
-execTask()
+// execTask()
 // daka()
 function daka() {
   sleep(4000)
@@ -78,3 +78,4 @@ function viewWeb(time) {
   //模拟返回键，返回到任务栏页面
   back()
 }
+
