@@ -3,7 +3,7 @@ function findTxt(list) {
   console.show()
   let flag = false
   for (let i = 0; i < list.length; i++) {
-    var btn = text(list[i]).findOne(1000)
+    var btn = text(list[i]).findOne(500)
     if (btn) {
       console.log('找到了===', list[i])
       flag = true
@@ -12,5 +12,8 @@ function findTxt(list) {
   if (!flag) {
     console.log('没找到===')
   }
+  setTimeout(() => {
+    console.hide()
+  }, 3000)
 }
-findTxt(['浏览', '随机获得'])
+findTxt(['太空种子'])
