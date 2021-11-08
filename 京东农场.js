@@ -8,7 +8,6 @@ function init() {
   auto.waitFor()
   console.show()
   exectask()
-  // jiaoshui(12)
   // jiaoshui()
   setTimeout(() => {
     console.hide()
@@ -82,7 +81,7 @@ function backtolist() {
       break
     } else {
       back()
-      sleep(1000)
+      sleep(800)
     }
   }
 }
