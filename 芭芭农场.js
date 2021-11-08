@@ -54,20 +54,20 @@ function execTask() {
           if (parent.findOne(text('浏览天天领现金'))) {
             console.log('浏览天天领现金===')
             continue
-            // let gotobtn = className('android.view.View')
-            //   .clickable(true)
-            //   .depth(9)
-            //   .findOne(2000)
-            // if (gotobtn) {
-            //   console.log('天天领现金===')
-            //   const bound = gotobtn.bounds()
-            //   sleep(1000)
-            //   console.log('bound===', bound)
-            //   if (click(bound.centerX() + 100, bound.centerY())) {
-            //     console.log('点击成功===')
-            //   }
-            //   sleep(2000)
-            // }
+            let gotobtn = className('android.view.View')
+              .clickable(true)
+              .depth(9)
+              .findOne(2000)
+            if (gotobtn) {
+              console.log('天天领现金===')
+              const bound = gotobtn.bounds()
+              sleep(1000)
+              console.log('bound===', bound)
+              if (click(bound.centerX() + 100, bound.centerY())) {
+                console.log('点击成功===')
+              }
+              sleep(2000)
+            }
           }
           parent.child(1).click()
           sleep(1000)

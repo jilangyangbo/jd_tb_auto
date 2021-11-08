@@ -10,24 +10,7 @@ function init() {
 }
 init()
 
-function test() {
 
-  var button = className('android.view.View').depth(10) //.find() //.depth(10)
-  9  3  领京豆
-  if (button) {
-    console.log('button===', button.length)
-    var rect = button.findOne().bounds()
-    console.log('rect===', rect)
-    // button[1].click()// 小鸭子
-    // button[4].click() // 签到
-    // button[5].click() // 领水滴
-    // button[7].click() // 助理领奖
-    // button[8].click() // 好友
-    // button[10].click() // 天天红包    // id('A2').findOne(1000)
-  } else {
-    console.log('不存在===')
-  }
-}
 function choujiang() {
   let i = 0
   while (i < 10) {
