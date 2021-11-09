@@ -56,34 +56,39 @@ function execTask() {
           parent.child(1).text() == '去浏览'
         ) {
           console.log('浏览15秒===')
-          flag = true
-          if (parent.findOne(text('浏览天天领现金'))) {
-            console.log('浏览天天领现金===')
-            continue
-            // let gotobtn = className('android.view.View')
-            //   .clickable(true)
-            //   .depth(9)
-            //   .findOne(2000)
-            // if (gotobtn) {
-            //   console.log('天天领现金===')
-            //   const bound = gotobtn.bounds()
-            //   sleep(1000)
-            //   console.log('bound===', bound)
-            //   if (click(bound.centerX() + 100, bound.centerY())) {
-            //     console.log('点击成功===')
-            //   }
-            //   sleep(2000)
-            // }
+          if (parent.findOne(textStartsWith('浏览天天领现金'))) {
+            console.log('浏览天天领现金跳过===')
+            let gotobtn = className('android.view.View')
+              .clickable(true)
+              .depth(9)
+              .findOne(2000)
+            if (gotobtn) {
+              console.log('天天领现金===')
+              const bound = gotobtn.bounds()
+              sleep(1000)
+              console.log('bound===', bound)
+              if (click(bound.centerX() + 100, bound.centerY())) {
+                console.log('点击成功===')
+              } else {
+                continue
+              }
+              sleep(2000)
+            } else {
+              continue
+            }
           }
           if (
-            parent.findOne(text('淘金币')) ||
-            parent.findOne(text('玩喵糖'))
+            parent.findOne(textStartsWith('浏览金币小镇')) ||
+            parent.findOne(textStartsWith('玩喵糖'))
           ) {
             console.log('特殊等待===')
-            sleep(4000)
+            parent.child(1).click()
+            sleep(2000)
+          } else {
+            parent.child(1).click()
           }
-          parent.child(1).click()
-
+          flag = true
+          sleep(4000)
           sleep(16000)
           back()
           break

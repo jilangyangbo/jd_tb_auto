@@ -4,6 +4,7 @@ function init() {
   // execTask()
   // choujiang()
   jingdoushengji()
+  // zannengliang()
   setTimeout(() => {
     console.hide()
   }, 5000)
@@ -40,8 +41,8 @@ function choujiang() {
       console.log('开始抽奖===')
       let bound = tartget.bounds()
       click(bound.centerX(), bound.centerY() - 50)
-      sleep(5000)
-      tartget = text('继续抽奖').findOne(5000)
+      sleep(6000)
+      tartget = text('继续抽奖').findOne(6000)
       if (tartget) {
         console.log('继续抽奖===')
         tartget.click()
@@ -55,6 +56,7 @@ function choujiang() {
   }
 }
 function execTask() {
+  console.info('==天天红包==')
   while (true) {
     let btn = text('立即领取').findOne(500)
     if (btn) {
@@ -94,22 +96,36 @@ function backtolist(txt) {
 }
 function zannengliang() {
   while (true) {
-    btn = text('观看领豆').findOne(500) || text('去看看').findOne(500)
+    let btn = text('观看领豆').findOne(500)
     if (btn) {
       console.log('浏览===')
       btn.click()
       sleep(800)
       backtolist('发现新宝藏')
     } else {
-      console.log('任务完成===')
+      console.log('观看领豆任务完成===')
       break
+    }
+  }
+  let list = text('逛一逛抽2个能量').find()
+  if (list && list.length) {
+    console.log('list.length===', list.length)
+    for (let i = 0; i < list.length; i++) {
+      let element = list[i]
+      console.log('i===', i)
+      console.log('element===', element.bounds())
+      // console.log('element===', element)
+      element.click()
+      sleep(5000)
+      back()
+      sleep(1000)
     }
   }
   while (true) {
     let btn = textStartsWith('点击抽奖').findOne(500)
     if (btn) {
       console.log('点击抽奖===')
-      sleep(5000)
+      sleep(6000)
       btn.click()
     } else {
       console.log('任务完成===')
@@ -118,6 +134,7 @@ function zannengliang() {
   }
 }
 function jingdoushengji() {
+  console.info('==升级京豆==')
   while (true) {
     sleep(1000)
     let btn = textStartsWith('去完成').findOne(500)
@@ -125,10 +142,10 @@ function jingdoushengji() {
       sleep(500)
       console.log('去完成===')
       let bound = btn.bounds()
-      console.log('bound===', bound)
+      // console.log('bound===', bound)
       click(bound.centerX(), bound.centerY())
       sleep(5000)
-      back()
+      backtolist('做任务再升一级')
     } else {
       console.log('任务完成===')
       break
